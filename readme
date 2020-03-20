@@ -1,0 +1,33 @@
+sudo service mongod stop 
+sudo service mysql stop
+sudo docker-compose up [in docker-compose file what ever given all service will up]
+sudo docker-compose down[all service in this text will went down]
+sudo docker build . -t newsservice -f Dockerfile                         [go to project location where the Dockerfile will be there]
+sudo docker run --name newsservicecontian -it -p 8081:8081 newsservice
+1)create newd docker hub account
+sudo docker login --username "docekrloginname" --password "dockerpassword"
+  ex: sudo docker tag 12344567 purushottamc/dockerrepository
+sudo docker tag "tagID" dockerusername/dockerrepository
+sudo docker push dockerusername/dockerrepository
+
+sudo docker container ps -a [to get list of container running]
+sudo docker stop containerId [to stop container running]
+sudo docker rm containerId  [to remove container running]
+sudo docker images
+sudo docker image rm -f imageId
+
+
+---------React-
+npm start
+npm run serve
+npm run cypress
+npm test
+
+all , first stop these local services and then run docker
+------mongo----
+sudo mongod [to start mongo server]
+sudo mongo [to see what are DB and tables we have]
+show databses
+use databases-name
+show tables
+db.tableName.find().pretty()
