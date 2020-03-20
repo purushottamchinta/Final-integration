@@ -18,10 +18,11 @@ sudo docker image rm -f imageId
 
 
 ---------React-
-npm start
-npm run serve
-npm run cypress
-npm test
+npm install
+npm start [to start react ui]
+npm run serve [to start ]
+npm run cypress [end to end test]
+npm test [unit test cases]
 
 all , first stop these local services and then run docker
 ------mongo----
