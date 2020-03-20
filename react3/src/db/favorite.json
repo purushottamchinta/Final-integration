@@ -1,0 +1,26 @@
+{
+  "favorite": [
+    {
+      "title_suggest": "The Pitchfork Patrol",
+      "author_name": [
+        "Clay Fisher",
+        "Will (A.K.A.) Henry"
+      ],
+      "author_key": [
+        "OL712724A",
+        "OL2786786A"
+      ],
+      "id": 10
+    },
+    {
+      "title_suggest": "Weak Rock Soft Frctd & Wthrd-V3",
+      "author_name": [
+        "Akai"
+      ],
+      "author_key": [
+        "OL3200767A"
+      ],
+      "id": 11
+    }
+  ]
+}

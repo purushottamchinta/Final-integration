@@ -1,0 +1,120 @@
+# Dockerfile has been added in all micro-services, you need to dockerize all micro-services and add docker-compose.yml file
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    network_mode: host
+    container_name: mysqlcontainer
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_CI_URL: jdbc:mysql://localhost:3306/newsdb
+   
+  AuthenticationService:
+    #image: authservice
+    image: purushottamc/authenticationservice 
+    #build: AuthenticationService/
+    container_name: authservicecontainer
+    restart: always
+    network_mode: host
+    depends_on:
+      - mysql
+      - newz-netflix-eureka-server
+      - newz-netflix-zuul-api-gateway
+    ports:
+      - 8082:8082
+    healthcheck:
+      test: "exit 0"
+     
+  NewsService:
+    #image: newsservice
+    image: purushottamc/newsservice
+    #build: NewsService/
+    container_name: newsservicecontainer
+    restart: always
+    network_mode: host
+    depends_on:
+      - mongo
+      - newz-netflix-eureka-server
+      - newz-netflix-zuul-api-gateway      
+    ports:
+      - 8081:8081
+    healthcheck:
+      test: "exit 0"
+     
+  NewsSourceService:
+    image: purushottamc/newssourceservice
+    #build: NewsSourceService/
+    container_name: newssourceservicecontainer
+    restart: always
+    network_mode: host
+    depends_on:
+      - mongo
+      - newz-netflix-eureka-server
+      - newz-netflix-zuul-api-gateway      
+    ports:
+      - 8083:8083
+    healthcheck:
+      test: "exit 0"
+     
+  UsereProfileSrvice:
+    #image: userprofileservice
+    image: purushottamc/userprofileservice
+    #build: UserProfileService/
+    container_name: userprofileservicecontainer
+    restart: always
+    network_mode: host
+    depends_on:
+      - mongo
+      - newz-netflix-eureka-server
+      - newz-netflix-zuul-api-gateway      
+    ports:
+      - 8084:8084
+    healthcheck:
+      test: "exit 0"
+     
+  mongo:
+    image: mongo
+    network_mode: host
+    container_name: mongocontainer
+    ports:
+      - 27017:27017
+      
+  newz-netflix-eureka-server:
+    #image: newz-netflix-eureka-server
+    image: purushottamc/newz-netflix-eureka-server
+    #build: newz-netflix-eureka-server/
+    container_name: newznetflixeurekaservercontainer
+    restart: always
+    network_mode: host
+    ports:
+      - 8761:8761
+    
+
+  newz-netflix-zuul-api-gateway:
+    #image: newz-netflix-zuul-api-gateway
+    image: purushottamc/newz-netflix-zuul-api-gateway
+    #build: newz-netflix-zuul-api-gateway/
+    container_name: newznetflixzuulapigatewaycontainer
+    restart: always
+    network_mode: host
+    depends_on:
+      - newz-netflix-eureka-server    
+    ports:
+      - 8091:8091
+    
+  docker-react-app:
+    image: purushottamc/docker-react-app
+    #build: docker-react-app/
+    container_name: dockerreactappcontainer
+    restart: always
+    network_mode: host
+    ports:
+      - 3000:3000   
+      
+   
+
+  

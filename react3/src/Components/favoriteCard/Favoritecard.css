@@ -1,0 +1,19 @@
+Img{
+    width: 100%;
+    height: 250px;
+}
+p{
+    display: none;
+    background-color: rgb(165, 165, 165);
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+}
+#myCard{
+    height: 100%;
+}
+.card-body{
+    bottom: 0;
+}
